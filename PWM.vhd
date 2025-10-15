@@ -29,8 +29,8 @@ architecture Behavioral of PWM is
     signal alreadyP_PWM_cycles : STD_LOGIC;
     signal              pwmCnt : STD_LOGIC_VECTOR (7 downto 0);
     constant                 P : STD_LOGIC_VECTOR (7 downto 0) := "0000"&"0011"; --3
-    signal         pwm_pos_edge : STD_LOGIC;
-    signal                pwm : STD_LOGIC;
+    signal        pwm_pos_edge : STD_LOGIC;
+    signal                 pwm : STD_LOGIC;
     signal             pwm_old : STD_LOGIC;
     
 begin
@@ -51,12 +51,12 @@ begin
         elsif i_clk'event and i_clk = '1' then
             case state2 is
                 when gettingBright =>
-                    if upbnd1 = "1111"&"1111" then --¤w¸g³Ì«G then
-                        state2 <= gettingDark; --ÅÜ·t
+                    if upbnd1 = "1111"&"1111" then --å·²ç¶“æœ€äº® then
+                        state2 <= gettingDark; --è®Šæš—
                     end if;
                 when gettingDark =>
-                    if upbnd1 = "0000"&"0000" then --¤w¸g³Ì·t then
-                        state2 <= gettingBright; --ÅÜ«G
+                    if upbnd1 = "0000"&"0000" then --å·²ç¶“æœ€æš— then
+                        state2 <= gettingBright; --è®Šäº®
                     end if;
                 when others =>
                     null;
@@ -111,7 +111,7 @@ begin
             alreadyP_PWM_cycles <= '0';
         elsif i_clk'event and i_clk = '1' then
             if pwm_pos_edge = '1' then
-                if pwmCnt >= P - 1 then --P=3
+                if pwmCnt >= P - 1 then
                     pwmCnt <= "00000000";
                     alreadyP_PWM_cycles <= '1';
                 else
@@ -131,8 +131,8 @@ begin
 			pwm_old <='0';
         elsif i_clk'event and i_clk = '1' then    
 		    pwm_old <= pwm;
-		    if pwm_old = '0' and pwm='1' then --¦pªG¦³¥¿½t(¥Ñ0Âà1)
-			    pwm_pos_edge <= '1'; --§ì¨ì¥¿½t
+		    if pwm_old = '0' and pwm='1' then --å¦‚æžœæœ‰æ­£ç·£(ç”±0è½‰1)
+			    pwm_pos_edge <= '1'; --æŠ“åˆ°æ­£ç·£
 			else
 			    pwm_pos_edge <= '0';
 			end if;
