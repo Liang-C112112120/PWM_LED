@@ -1,5 +1,7 @@
-# PWM LED
+# PWM_LED
 使用兩個計數器交替運作來模擬PWM的訊號，控制LED燈的亮滅。
+
+運用上次作業的兩個計數器來模擬PWM訊號，採用8位元的寬度，一個正數、一個倒數，兩者的計數值相加為255(2^8 = 255)。
 
 模擬結果：
 <img width="1123" height="395" alt="sim1" src="https://github.com/user-attachments/assets/0bd0032c-eb43-4b78-894d-dda358e0f721" />
